@@ -63,7 +63,7 @@ namespace AutoExtrator
 				return;
 			}
 
-			IOUtils.WrapSharingViolations(() => File.ReadAllBytes(file),null,int.MaxValue,1000);
+			IOUtils.WrapSharingViolations(() => { using (File.OpenRead(file));}, null, int.MaxValue, 1000);
 
 			var fileName = Path.GetFileNameWithoutExtension(file);
 			var parentDirectory = Path.GetDirectoryName(file);
