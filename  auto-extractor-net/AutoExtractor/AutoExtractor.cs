@@ -48,7 +48,7 @@ namespace AutoExtrator
 			_winrarPath = winrarPath;
 			_extentions = extentions ?? new[] {".zip", ".rar"};
 			_watchers = new List<FileSystemWatcher>();
-			foreach (var watcher in monitoringFolders.Where(Directory.Exists).Select(folder => new FileSystemWatcher(folder) {IncludeSubdirectories = false}))
+			foreach (var watcher in monitoringFolders.Where(Directory.Exists).Select(folder => new FileSystemWatcher(folder) {IncludeSubdirectories = true}))
 			{
 				watcher.Created += WatcherHandler;
 				_watchers.Add(watcher);
