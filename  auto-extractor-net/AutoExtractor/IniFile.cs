@@ -23,8 +23,8 @@ namespace AutoExtrator
 
 			public string this[string key]
 			{
-				get { return _keys.TryGet(key); }
-				set { _keys[key] = value; }
+				get { return _keys.TryGet(key.ToLower()); }
+				set { _keys[key.ToLower()] = value; }
 			}
 
 			public void Add(string value)
@@ -65,7 +65,7 @@ namespace AutoExtrator
 
 		public IniFileSection this[string name]
 		{
-			get { return _sections.TryGet(name,()=> new IniFileSection(name)); }
+			get { return _sections.TryGet(name.ToLower(), () => new IniFileSection(name)); }
 		}
 
 		public IniFile(string filePath)

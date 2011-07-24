@@ -78,6 +78,16 @@ namespace AutoExtrator
 			return Safe<T, TResult, Exception>(selector);
 		}
 
+		public static Action<T> Safe<T>(this Action<T> selector)
+		{
+			var result = Safe<T, T, Exception>(x => 
+			{ 
+				selector(x);
+			    return default(T);
+			});
+			return x => result(x);
+		}
+
 		public static T If<T>(this T obj, Func<T, bool> predicate)
 			where T : class
 		{
@@ -100,6 +110,12 @@ namespace AutoExtrator
 		public static Func<T> Recreate<T>(Func<T> factory)
 		{
 			return factory;
+		}
+
+		public static bool ToBoolean(this string str)
+		{
+			var norm = str.ToLower();
+			return norm == "yes" || norm == "true";
 		}
 	}
 }

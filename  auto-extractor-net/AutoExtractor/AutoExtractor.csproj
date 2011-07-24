@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Annotations.cs" />
     <Compile Include="AutoExtractor.cs" />
+    <Compile Include="Crc32.cs" />
     <Compile Include="IniFile.cs" />
     <Compile Include="IOUtils.cs" />
     <Compile Include="FunctionTools.cs" />
